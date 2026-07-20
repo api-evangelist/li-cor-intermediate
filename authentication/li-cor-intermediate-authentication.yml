@@ -1,0 +1,13 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/li-cor-intermediate-hobolink-openapi.json
+summary:
+  types:
+  - http
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  sources:
+  - openapi/li-cor-intermediate-hobolink-openapi.json
