@@ -1,23 +1,125 @@
 aid: li-cor-intermediate
 name: LI-COR Intermediate
-description: LI-COR Intermediate is a company surfaced as a portfolio company of battery-ventures and
-  added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  LI-COR Intermediate, Inc. is the Battery Ventures-backed holding entity for LI-COR, a Lincoln,
+  Nebraska environmental and life-science instrumentation maker founded more than fifty years ago.
+  The group operates under two brands: LI-COR Environmental (licor.com), which builds greenhouse-gas
+  analyzers, eddy-covariance flux systems, photosynthesis and soil-gas instruments, and the HOBO
+  line of data loggers; and LICORbio (licorbio.com), which builds Western blot imaging systems and
+  infrared fluorescent dyes and reagents. Its instruments are cited in more than 73,000 research
+  publications and used across 1,200+ universities in 150+ countries. The connected-device side of
+  the business runs through LI-COR Cloud (licor.cloud, formerly HOBOlink), which exposes a public
+  read-only HOBOLINK External API for pulling logger and sensor observations into customer systems.
 url: https://raw.githubusercontent.com/api-evangelist/li-cor-intermediate/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://www.licor.com/favicon.ico
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - battery-ventures
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: enriched
+x-tier-reason: public-api-found
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
-apis: []
+- Environmental Monitoring
+- Greenhouse Gas
+- Climate
+- Agriculture
+- Sensors
+- Data Loggers
+- IoT
+- Scientific Instruments
+- Life Sciences
+- Time Series Data
+apis:
+- aid: li-cor-intermediate:li-cor-intermediate-data-api
+  name: LI-COR Intermediate Data API
+  description: The Data API from LI-COR Intermediate — 1 operation(s) for data.
+  humanURL: https://api.licor.cloud/v1/docs
+  baseURL: https://api.licor.cloud
+  tags:
+  - Data
+  properties:
+  - type: OpenAPI
+    url: openapi/li-cor-intermediate-data-api-openapi.yml
+  - type: APIReference
+    url: https://api.licor.cloud/v1/docs
+- aid: li-cor-intermediate:li-cor-intermediate-newa-api
+  name: LI-COR Intermediate Newa API
+  description: The Newa API from LI-COR Intermediate — 1 operation(s) for newa.
+  humanURL: https://api.licor.cloud/v1/docs
+  baseURL: https://api.licor.cloud
+  tags:
+  - Newa
+  properties:
+  - type: OpenAPI
+    url: openapi/li-cor-intermediate-newa-api-openapi.yml
+  - type: APIReference
+    url: https://api.licor.cloud/v1/docs
+common:
+- type: AgenticAccess
+  url: agentic-access/li-cor-intermediate-agentic-access.yml
+- type: Website
+  url: https://www.licor.com/
+- type: Documentation
+  url: https://api.licor.cloud/v1/docs
+- type: APIReference
+  url: https://api.licor.cloud/v1/docs
+- type: Support
+  url: https://www.licor.com/support/home.html
+- type: Blog
+  url: https://www.licor.com/blog
+- type: GitHubOrganization
+  url: https://github.com/LI-COR
+- type: TermsOfService
+  url: https://www.licor.com/corp/legal
+- type: PrivacyPolicy
+  url: https://www.licor.com/corp/privacy-policy
+- type: Authentication
+  url: authentication/li-cor-intermediate-authentication.yml
+- type: ErrorCatalog
+  url: errors/li-cor-intermediate-error-codes.yml
+- type: RateLimits
+  url: rate-limits/li-cor-intermediate-rate-limits.yml
+- type: Conventions
+  url: conventions/li-cor-intermediate-conventions.yml
+- type: Conformance
+  url: conformance/li-cor-intermediate-conformance.yml
+- type: Lifecycle
+  url: lifecycle/li-cor-intermediate-lifecycle.yml
+- type: DataModel
+  url: data-model/li-cor-intermediate-data-model.yml
+- type: DomainSecurity
+  url: security/li-cor-intermediate-domain-security.yml
+- type: WellKnown
+  url: well-known/li-cor-intermediate-well-known.yml
+- type: MCPServer
+  url: mcp/li-cor-intermediate-mcp.yml
+- type: LLMsTxt
+  url: llms/li-cor-intermediate-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
