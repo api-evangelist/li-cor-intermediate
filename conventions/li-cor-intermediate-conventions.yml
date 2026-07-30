@@ -1,0 +1,82 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/li-cor-intermediate-hobolink-openapi.json + live response headers on https://api.licor.cloud/
+api: HOBOLINK External API
+authentication:
+  style: bearer-token
+  header: Authorization
+  format: JWT
+  see: authentication/li-cor-intermediate-authentication.yml
+versioning:
+  scheme: uri-path
+  current: v1
+  example: https://api.licor.cloud/v1/data
+  see: lifecycle/li-cor-intermediate-lifecycle.yml
+idempotency:
+  supported: false
+  rationale: >-
+    The published surface is read-only (GET only, two operations). No
+    idempotency-key header or parameter is declared in the OpenAPI and none is
+    documented, so no Idempotency pointer is emitted for this provider.
+pagination:
+  style: none-declared
+  notes: >-
+    No page/cursor/limit/offset parameters are declared. Result-set truncation is
+    instead signaled in the response body: /v1/data returns a boolean
+    "max_results" field and /v1/newa/{device-serial-number} returns a boolean
+    "more_data" field. Callers narrow results by shrinking the
+    start_date_time / end_date_time window rather than by paging.
+  truncation_fields:
+  - field: max_results
+    type: boolean
+    operation: GET /v1/data
+  - field: more_data
+    type: boolean
+    operation: GET /v1/newa/{device-serial-number}
+time:
+  parameter_format: 'yyyy-MM-dd HH:mm:ss'
+  timezone: UTC
+  required_range_params:
+  - start_date_time
+  - end_date_time
+  notes: >-
+    Both operations require an explicit UTC start and end date-time. Timestamps in
+    responses are returned as strings.
+filtering:
+  - operation: GET /v1/data
+    param: loggers
+    style: comma-separated list of logger serial numbers
+    required: true
+  - operation: GET /v1/newa/{device-serial-number}
+    param: device-serial-number
+    style: path parameter, single device serial number
+    required: true
+field_expansion:
+  supported: false
+metadata:
+  supported: partial
+  notes: >-
+    /v1/newa returns a per-sensor "meta_data" string field. There is no
+    general-purpose user-writable metadata surface (the API is read-only).
+request_tracing:
+  request_id_header: none-observed
+error_envelope:
+  format: coded-error-registry
+  notes: >-
+    Not RFC 9457. Errors carry a class-prefixed code (VAL-/ATH-/SYS-/DW-/IOE-).
+  see: errors/li-cor-intermediate-error-codes.yml
+rate_limit_signaling:
+  headers:
+  - RateLimit-Policy
+  - RateLimit-Limit
+  - RateLimit-Remaining
+  - RateLimit-Reset
+  observed_policy: 60;w=60
+  see: rate-limits/li-cor-intermediate-rate-limits.yml
+cors:
+  access_control_allow_origin: '*'
+  access_control_allow_methods: PUT, GET, POST, OPTIONS, DELETE
+  access_control_allow_credentials: true
+  notes: >-
+    CORS headers advertise write methods, but only GET operations are published in
+    the OpenAPI. Recorded as observed, not as evidence of a write surface.

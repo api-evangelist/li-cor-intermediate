@@ -1,0 +1,26 @@
+generated: '2026-07-19'
+method: probed
+source: https://api.licor.cloud/
+notes: >-
+  Rate limit policy read directly from live response headers on
+  https://api.licor.cloud/ (IETF draft RateLimit header fields). The API also
+  documents a 429 SYS-002 "Too many requests" response in its OpenAPI.
+headers:
+  policy: RateLimit-Policy
+  limit: RateLimit-Limit
+  remaining: RateLimit-Remaining
+  reset: RateLimit-Reset
+observed:
+  ratelimit_policy: 60;w=60
+  ratelimit_limit: 60
+rate_limits:
+  - api: HOBOLINK External API
+    scope: per-client
+    limit_count: 60
+    window_seconds: 60
+    unit: requests
+    signaled_via: RateLimit-Limit / RateLimit-Remaining / RateLimit-Reset response headers
+    exceeded_response:
+      status: 429
+      code: SYS-002
+      title: Too many requests

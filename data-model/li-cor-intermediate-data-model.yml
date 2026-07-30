@@ -1,0 +1,69 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/li-cor-intermediate-hobolink-openapi.json
+api: HOBOLINK External API
+notes: >-
+  The spec declares no components.schemas — every response schema is inline and
+  anonymous. Entities below are derived from the inline response object shapes and
+  their id-bearing fields (logger_sn, sensor_sn); names are assigned by this
+  pipeline for the graph and are not provider-published type names.
+entities:
+- name: Logger
+  description: A HOBO data logger, identified by serial number.
+  identifier: logger_sn
+  fields:
+  - {name: logger_sn, type: string, role: identifier}
+  source: openapi/li-cor-intermediate-hobolink-openapi.json#/paths/~1v1~1data/get/responses/200
+- name: Sensor
+  description: A sensor attached to a logger, identified by serial number.
+  identifier: sensor_sn
+  fields:
+  - {name: sensor_sn, type: string, role: identifier}
+  - {name: measurement_type, type: string}
+  - {name: sensor_measurement_type, type: string}
+  - {name: unit, type: string}
+  - {name: meta_data, type: string}
+  source: openapi/li-cor-intermediate-hobolink-openapi.json
+- name: Observation
+  description: A single timestamped sensor reading.
+  identifier: null
+  fields:
+  - {name: timestamp, type: string, format: 'yyyy-MM-dd HH:mm:ss UTC'}
+  - {name: value, type: number}
+  - {name: unit, type: string}
+  - {name: data_type, type: string}
+  - {name: data_type_id, type: string}
+  - {name: logger_sn, type: string, role: reference}
+  - {name: sensor_sn, type: string, role: reference}
+  source: openapi/li-cor-intermediate-hobolink-openapi.json
+relationships:
+- from: Logger
+  to: Sensor
+  kind: has_many
+  via: logger_sn
+  evidence: observations in /v1/data carry both logger_sn and sensor_sn
+- from: Sensor
+  to: Observation
+  kind: has_many
+  via: sensor_sn
+  evidence: /v1/newa/{device-serial-number} nests observations[] inside each sensors[] item
+- from: Observation
+  to: Sensor
+  kind: belongs_to
+  via: sensor_sn
+- from: Observation
+  to: Logger
+  kind: belongs_to
+  via: logger_sn
+response_shapes:
+- operation: GET /v1/data
+  shape: flat
+  envelope:
+    message: string
+    max_results: boolean
+    data: array of Observation
+- operation: GET /v1/newa/{device-serial-number}
+  shape: nested
+  envelope:
+    more_data: boolean
+    sensors: array of Sensor, each with a nested observations array

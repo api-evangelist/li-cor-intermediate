@@ -1,0 +1,38 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for HOBOLINK External API
+  version: 1.0.0
+extends: openapi/li-cor-intermediate-hobolink-openapi.json
+x-generated: '2026-07-19'
+x-method: generated
+x-source: openapi/li-cor-intermediate-hobolink-openapi.json
+x-notes: >-
+  Captures API Evangelist enhancements only; the harvested spec is never mutated.
+  The upstream spec ships no operationIds, no tags, no summaries, and no
+  components.schemas — the actions below add the operationIds and tags our
+  derived artifacts (skills, MCP tools, data model) reference, plus the
+  runtime rate-limit facts observed on the live host.
+actions:
+- target: $.info
+  update:
+    description: >-
+      Read-only REST API for LI-COR Cloud (formerly HOBOlink) returning time-series
+      observations from HOBO data loggers and their attached sensors.
+    x-apievangelist-enriched: '2026-07-19'
+    x-rate-limit: 60 requests per 60 seconds (RateLimit-Policy 60;w=60)
+- target: $.paths['/v1/data'].get
+  update:
+    operationId: getOrganizationData
+    summary: Fetch observations for one or more loggers over a UTC time range
+    tags:
+    - Data
+- target: $.paths['/v1/newa/{device-serial-number}'].get
+  update:
+    operationId: getDeviceSensorData
+    summary: Fetch sensor-grouped observations for a single device over a UTC time range
+    tags:
+    - Data
+- target: $.tags
+  update:
+  - name: Data
+    description: Retrieval of logger and sensor observations.

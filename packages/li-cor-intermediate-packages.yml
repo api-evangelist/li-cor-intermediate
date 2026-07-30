@@ -1,0 +1,29 @@
+generated: '2026-07-19'
+method: searched
+source: registry searches + LI-COR GitHub org
+packages: []
+notes: >-
+  No first-party LI-COR / HOBOlink client library was found. Recorded as a
+  negative result so re-runs skip re-probing. Because no official SDK exists, no
+  SDKs (or Packages) pointer is wired into apis.yml.
+registries_probed:
+- registry: npm
+  query: hobolink
+  result: no matches
+- registry: npm
+  query: licor
+  result: no matches
+- registry: pypi
+  query: hobolink
+  result: 404
+- registry: pypi
+  query: licor
+  result: >-
+    200 but unrelated third-party package ("A script to add license disclaimers"
+    by Daniel Knuettel) — NOT a LI-COR client
+- registry: pypi
+  query: licorbio
+  result: 404
+- registry: github
+  query: github.com/LI-COR (org renders as LICORbio)
+  result: org exists, no public repositories listed

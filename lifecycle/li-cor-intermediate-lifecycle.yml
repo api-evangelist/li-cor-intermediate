@@ -1,0 +1,38 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/li-cor-intermediate-hobolink-openapi.json + live probes
+api: HOBOLINK External API
+versioning:
+  scheme: uri-path
+  current: v1
+  spec_version: v1
+  evidence: 'servers[0].url https://api.licor.cloud with all paths prefixed /v1/; info.version "v1"'
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: >-
+    No deprecation or sunset policy is published, and no Sunset/Deprecation
+    response headers were observed. No Deprecation pointer is emitted.
+deprecated_operations: []
+sla:
+  url: null
+  uptime_target: null
+status_page:
+  url: null
+  probed:
+  - host: status.licor.cloud
+    result: NXDOMAIN
+  notes: >-
+    No status page was found for either licor.com or licor.cloud. No StatusPage
+    pointer is emitted.
+changelog:
+  url: null
+  notes: >-
+    No dated public changelog for the HOBOLINK External API was located, so no
+    changelog/ artifact or ChangeLog pointer is emitted.
+brand_history:
+  - note: >-
+      The API and its cloud platform were previously branded HOBOlink under Onset
+      Computer Corporation; hobolink.com now 301-redirects to www.licor.cloud. The
+      OpenAPI still carries the title "HOBOLINK External API".
+    evidence: 'curl -L https://hobolink.com/ -> https://www.licor.cloud/ (200)'

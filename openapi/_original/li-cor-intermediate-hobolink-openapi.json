@@ -1,0 +1,250 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "HOBOLINK External API",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "https://api.licor.cloud",
+      "description": "API Server"
+    }
+  ],
+  "paths": {
+    "/v1/data": {
+      "get": {
+        "description": "Fetch organization data",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "loggers",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Comma-separated list of logger serial numbers (ex. 10665731,10665732)."
+          },
+          {
+            "name": "start_date_time",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "UTC start date for query, in format \"yyyy-MM-dd HH:mm:ss\" (ex. 2023-11-27 13:45:00)."
+          },
+          {
+            "name": "end_date_time",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "UTC end date for query, in format \"yyyy-MM-dd HH:mm:ss\" (ex. 2023-11-27 13:45:00)."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns json object with a list of observations.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "max_results": {
+                      "type": "boolean"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "logger_sn": {
+                            "type": "string"
+                          },
+                          "sensor_sn": {
+                            "type": "string"
+                          },
+                          "timestamp": {
+                            "type": "string"
+                          },
+                          "data_type": {
+                            "type": "string"
+                          },
+                          "data_type_id": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": "number"
+                          },
+                          "unit": {
+                            "type": "string"
+                          },
+                          "sensor_measurement_type": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "type": "error",
+            "description": "Error VAL-001 - VAL-008 Invalid Parameters."
+          },
+          "401": {
+            "type": "error",
+            "description": "Error ATH-001 Invalid token."
+          },
+          "403": {
+            "type": "error",
+            "description": "Error ATH-001 Invalid token."
+          },
+          "429": {
+            "type": "error",
+            "description": "Error SYS-002 Too many requests"
+          },
+          "509": {
+            "type": "error",
+            "description": "Error SYS-001 System is busy."
+          }
+        }
+      }
+    },
+    "/v1/newa/{device-serial-number}": {
+      "get": {
+        "description": "Fetch organization data",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "device-serial-number",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Device serial number"
+          },
+          {
+            "name": "start_date_time",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "UTC start date for query, in format \"yyyy-MM-dd HH:mm:ss\" (ex. 2023-11-27 13:45:00)."
+          },
+          {
+            "name": "end_date_time",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "UTC end date for query, in format \"yyyy-MM-dd HH:mm:ss\" (ex. 2023-11-27 13:45:00)."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns json object with a list of sensors.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "more_data": {
+                      "type": "boolean"
+                    },
+                    "sensors": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "measurement_type": {
+                            "type": "string"
+                          },
+                          "sensor_sn": {
+                            "type": "string"
+                          },
+                          "unit": {
+                            "type": "string"
+                          },
+                          "meta_data": {
+                            "type": "string"
+                          },
+                          "observations": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "value": {
+                                  "type": "number"
+                                },
+                                "timestamp": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "type": "error",
+            "description": "Error VAL-001, VAL-002, VAL-006, VAL-008, VAL-034 Invalid request."
+          },
+          "401": {
+            "type": "error",
+            "description": "Error ATH-001 Invalid token."
+          },
+          "403": {
+            "type": "error",
+            "description": "Error ATH-001 Invalid token."
+          },
+          "429": {
+            "type": "error",
+            "description": "Error SYS-002 Too many requests"
+          },
+          "500": {
+            "type": "error",
+            "description": "Error DW-010 Failed to retrieve observations from data warehouse, IOE-005 Unable to execute unit conversion function, IOE-006 Unable to load unit conversion function."
+          },
+          "509": {
+            "type": "error",
+            "description": "Error SYS-001 System is busy."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "tags": []
+}

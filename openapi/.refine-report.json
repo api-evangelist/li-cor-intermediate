@@ -1,0 +1,16 @@
+{
+  "provider": "li-cor-intermediate",
+  "sources": [
+    "li-cor-intermediate-data-api-openapi.yml",
+    "li-cor-intermediate-newa-api-openapi.yml"
+  ],
+  "outputs": [
+    "li-cor-intermediate-data-api-openapi.yml",
+    "li-cor-intermediate-newa-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

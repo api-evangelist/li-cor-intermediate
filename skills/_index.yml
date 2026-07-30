@@ -1,0 +1,19 @@
+generated: '2026-07-19'
+method: generated
+source: openapi/li-cor-intermediate-hobolink-openapi.json
+notes: >-
+  No provider-published Agent Skills or AGENTS.md were found on any LI-COR host or
+  in the LI-COR GitHub org. These skills are generated from the published OpenAPI
+  plus the conventions, errors and rate-limit artifacts in this repo. The upstream
+  spec ships no operationIds, so each skill is grounded in the real METHOD + path.
+skills:
+- file: li-cor-intermediate-pull-logger-observations.md
+  name: Pull HOBO logger observations
+  api: openapi/li-cor-intermediate-hobolink-openapi.json
+  operations:
+  - GET /v1/data
+- file: li-cor-intermediate-pull-device-sensor-data.md
+  name: Pull sensor-grouped data for one device
+  api: openapi/li-cor-intermediate-hobolink-openapi.json
+  operations:
+  - GET /v1/newa/{device-serial-number}

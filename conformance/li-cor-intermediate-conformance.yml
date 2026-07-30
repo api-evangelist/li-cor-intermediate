@@ -1,0 +1,47 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/li-cor-intermediate-hobolink-openapi.json + live response headers
+notes: >-
+  Derived from the published spec and observed runtime behavior only. No
+  compliance program, certification page, or trust center was found on any LI-COR
+  host, so no Compliance or TrustCenter pointer is emitted.
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: spec declares openapi 3.0.0
+- id: http-bearer-auth
+  conforms: true
+  evidence: components.securitySchemes.BearerAuth type http scheme bearer bearerFormat JWT
+- id: jwt-rfc7519
+  conforms: true
+  evidence: bearerFormat declared as JWT
+- id: oauth2
+  conforms: false
+  evidence: no oauth2 securityScheme declared and no token endpoint published
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: errors use a class-prefixed code registry, not application/problem+json
+- id: ietf-ratelimit-headers
+  conforms: true
+  evidence: 'live responses carry RateLimit-Policy: 60;w=60, RateLimit-Limit, RateLimit-Remaining, RateLimit-Reset'
+- id: rfc6797-hsts
+  conforms: true
+  evidence: 'api.licor.cloud sends Strict-Transport-Security: max-age=31536000; includeSubDomains'
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on all hosts
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: no Sunset or Deprecation header observed and no deprecation policy published
+- id: pagination
+  conforms: false
+  evidence: no page/cursor/limit parameters; truncation signaled via max_results / more_data booleans
+- id: idempotency
+  conforms: false
+  evidence: read-only GET surface, no idempotency key declared
+- id: json-api
+  conforms: false
+  evidence: bespoke JSON envelope

@@ -1,0 +1,75 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/li-cor-intermediate-hobolink-openapi.json
+api: HOBOLINK External API
+format: coded-error-registry
+notes: >-
+  The HOBOLINK External API does not use RFC 9457 application/problem+json. It
+  documents a coded error registry inline on each operation's 4xx/5xx responses,
+  using a prefixed class code (VAL- validation, ATH- authentication,
+  SYS- system, DW- data warehouse, IOE- unit conversion). Codes below are
+  transcribed verbatim from the published OpenAPI response descriptions; the
+  provider publishes no separate error reference page that was reachable, so
+  meanings beyond the published text are NOT asserted here.
+classes:
+  - prefix: VAL
+    meaning: Request parameter validation failure
+  - prefix: ATH
+    meaning: Authentication / token failure
+  - prefix: SYS
+    meaning: System availability and throttling
+  - prefix: DW
+    meaning: Data warehouse retrieval failure
+  - prefix: IOE
+    meaning: Unit conversion function failure
+errors:
+  - code: VAL-001 - VAL-008
+    status: 400
+    title: Invalid Parameters
+    published_text: Error VAL-001 - VAL-008 Invalid Parameters.
+    source_operation: openapi/li-cor-intermediate-hobolink-openapi.json#get /v1/data
+  - code: VAL-001, VAL-002, VAL-006, VAL-008, VAL-034
+    status: 400
+    title: Invalid request
+    published_text: Error VAL-001, VAL-002, VAL-006, VAL-008, VAL-034 Invalid request.
+    source_operation: openapi/li-cor-intermediate-hobolink-openapi.json#get /v1/newa/{device-serial-number}
+  - code: ATH-001
+    status: 401
+    title: Invalid token
+    published_text: Error ATH-001 Invalid token.
+    remediation: Re-issue the bearer JWT and retry.
+    source_operation: openapi/li-cor-intermediate-hobolink-openapi.json#get /v1/data
+  - code: ATH-001
+    status: 403
+    title: Invalid token
+    published_text: Error ATH-001 Invalid token.
+    source_operation: openapi/li-cor-intermediate-hobolink-openapi.json#get /v1/data
+  - code: SYS-002
+    status: 429
+    title: Too many requests
+    published_text: Error SYS-002 Too many requests
+    remediation: >-
+      Back off and retry. The API advertises IETF RateLimit headers
+      (RateLimit-Limit / RateLimit-Remaining / RateLimit-Reset); see
+      rate-limits/li-cor-intermediate-rate-limits.yml.
+    source_operation: openapi/li-cor-intermediate-hobolink-openapi.json#get /v1/data
+  - code: SYS-001
+    status: 509
+    title: System is busy
+    published_text: Error SYS-001 System is busy.
+    source_operation: openapi/li-cor-intermediate-hobolink-openapi.json#get /v1/data
+  - code: DW-010
+    status: 500
+    title: Failed to retrieve observations from data warehouse
+    published_text: Error DW-010 Failed to retrieve observations from data warehouse
+    source_operation: openapi/li-cor-intermediate-hobolink-openapi.json#get /v1/newa/{device-serial-number}
+  - code: IOE-005
+    status: 500
+    title: Unable to execute unit conversion function
+    published_text: Error IOE-005 Unable to execute unit conversion function
+    source_operation: openapi/li-cor-intermediate-hobolink-openapi.json#get /v1/newa/{device-serial-number}
+  - code: IOE-006
+    status: 500
+    title: Unable to load unit conversion function
+    published_text: Error IOE-006 Unable to load unit conversion function
+    source_operation: openapi/li-cor-intermediate-hobolink-openapi.json#get /v1/newa/{device-serial-number}

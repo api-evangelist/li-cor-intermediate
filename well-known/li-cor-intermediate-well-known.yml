@@ -1,0 +1,36 @@
+generated: '2026-07-19'
+method: searched
+source: live probes of /.well-known/ on each apis.yml + OpenAPI servers[] host
+notes: >-
+  No /.well-known/ discovery documents are published on any LI-COR host. Recorded
+  as a negative result so re-runs do not re-probe blindly. NOTE: www.licor.cloud
+  is a single-page app that returns HTTP 200 with the app shell for every path
+  (soft 404) — its apparent 200s for /llms.txt and /.well-known/security.txt are
+  NOT real documents and are deliberately not recorded as hits.
+hosts:
+- host: https://api.licor.cloud
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://www.licor.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /robots.txt
+    status: 200
+- host: https://www.licorbio.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /llms.txt
+    status: 404
