@@ -71,6 +71,8 @@ apis:
   - type: APIReference
     url: https://api.licor.cloud/v1/docs
 common:
+- type: Overlay
+  url: overlays/li-cor-intermediate-hobolink-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/li-cor-intermediate-agentic-access.yml
 - type: Website
