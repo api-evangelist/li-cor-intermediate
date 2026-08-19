@@ -2,13 +2,10 @@ generated: '2026-07-19'
 method: derived
 status: candidate
 source: openapi/li-cor-intermediate-hobolink-openapi.json
-notes: >-
-  No official or hosted LI-COR / HOBOlink MCP server was found (no MCP mention in
-  the docs surface, nothing in the LI-COR GitHub org, nothing on npm or PyPI). The
-  tools below are a candidate surface derived from the two published OpenAPI
-  operations. The upstream spec declares no operationIds, so source_operation
-  references use METHOD + path; the operationIds shown are the ones our overlay
-  assigns.
+notes: No official or hosted LI-COR / HOBOlink MCP server was found (no MCP mention in the docs surface,
+  nothing in the LI-COR GitHub org, nothing on npm or PyPI). The tools below are a candidate surface derived
+  from the two published OpenAPI operations. The upstream spec declares no operationIds, so source_operation
+  references use METHOD + path; the operationIds shown are the ones our overlay assigns.
 server:
   name: li-cor-hobolink
   transport: stdio
@@ -18,27 +15,43 @@ server:
     env: HOBOLINK_API_TOKEN
 tools:
 - name: get_organization_data
-  description: >-
-    Fetch observations for a comma-separated list of HOBO logger serial numbers
-    over a UTC start/end date-time range.
+  description: Fetch observations for a comma-separated list of HOBO logger serial numbers over a UTC
+    start/end date-time range.
   source_operation: openapi/li-cor-intermediate-hobolink-openapi.json#get /v1/data
   overlay_operation_id: getOrganizationData
   inputs:
-  - {name: loggers, required: true, description: 'Comma-separated logger serial numbers (ex. 10665731,10665732).'}
-  - {name: start_date_time, required: true, description: 'UTC start, format yyyy-MM-dd HH:mm:ss.'}
-  - {name: end_date_time, required: true, description: 'UTC end, format yyyy-MM-dd HH:mm:ss.'}
+  - name: loggers
+    required: true
+    description: Comma-separated logger serial numbers (ex. 10665731,10665732).
+  - name: start_date_time
+    required: true
+    description: UTC start, format yyyy-MM-dd HH:mm:ss.
+  - name: end_date_time
+    required: true
+    description: UTC end, format yyyy-MM-dd HH:mm:ss.
   read_only: true
 - name: get_device_sensor_data
-  description: >-
-    Fetch sensor-grouped observations for a single device serial number over a UTC
-    start/end date-time range.
+  description: Fetch sensor-grouped observations for a single device serial number over a UTC start/end
+    date-time range.
   source_operation: openapi/li-cor-intermediate-hobolink-openapi.json#get /v1/newa/{device-serial-number}
   overlay_operation_id: getDeviceSensorData
   inputs:
-  - {name: device-serial-number, required: true, description: Device serial number.}
-  - {name: start_date_time, required: true, description: 'UTC start, format yyyy-MM-dd HH:mm:ss.'}
-  - {name: end_date_time, required: true, description: 'UTC end, format yyyy-MM-dd HH:mm:ss.'}
+  - name: device-serial-number
+    required: true
+    description: Device serial number.
+  - name: start_date_time
+    required: true
+    description: UTC start, format yyyy-MM-dd HH:mm:ss.
+  - name: end_date_time
+    required: true
+    description: UTC end, format yyyy-MM-dd HH:mm:ss.
   read_only: true
 constraints:
   rate_limit: 60 requests per 60 seconds
   all_tools_read_only: true
+deployment:
+  mode: none
+  verified: derived
+  tools: 2
+  checked: '2026-08-12'
+  source: catalog MCP census

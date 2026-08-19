@@ -1,0 +1,417 @@
+{
+  "item": [
+    {
+      "id": "0e4a928a-a75b-4aa8-a50c-536c0315eb8d",
+      "name": "Data",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "75d0996f-496c-4795-98bb-cf27310c27d3",
+          "name": "Fetch organization data",
+          "request": {
+            "name": "Fetch organization data",
+            "description": {
+              "content": "Fetch organization data",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "loggers",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of logger serial numbers (ex. 10665731,10665732)."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date_time",
+                  "value": "<string>",
+                  "description": "(Required) UTC start date for query, in format \"yyyy-MM-dd HH:mm:ss\" (ex. 2023-11-27 13:45:00)."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date_time",
+                  "value": "<string>",
+                  "description": "(Required) UTC end date for query, in format \"yyyy-MM-dd HH:mm:ss\" (ex. 2023-11-27 13:45:00)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "28d7e1ef-8b8c-45d6-a1a9-4dbe3d0ff65c",
+              "name": "Returns json object with a list of observations.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "loggers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_date_time",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end_date_time",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"max_results\": false,\n  \"data\": [\n    {\n      \"logger_sn\": \"string\",\n      \"sensor_sn\": \"string\",\n      \"timestamp\": \"string\",\n      \"data_type\": \"string\",\n      \"data_type_id\": \"string\",\n      \"value\": 5459.812791752965,\n      \"unit\": \"string\",\n      \"sensor_measurement_type\": \"string\"\n    },\n    {\n      \"logger_sn\": \"string\",\n      \"sensor_sn\": \"string\",\n      \"timestamp\": \"string\",\n      \"data_type\": \"string\",\n      \"data_type_id\": \"string\",\n      \"value\": 4996.247278776124,\n      \"unit\": \"string\",\n      \"sensor_measurement_type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d6baa45-830a-46b0-8060-792a092e0610",
+              "name": "Error VAL-001 - VAL-008 Invalid Parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "loggers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_date_time",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end_date_time",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cac3bc0e-1748-4ea3-b5f4-e9acdb35371a",
+              "name": "Error ATH-001 Invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "loggers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_date_time",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end_date_time",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8d3be81e-62ce-4e88-aecb-003bc911aaed",
+              "name": "Error ATH-001 Invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "loggers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_date_time",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end_date_time",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "74b23079-d9f6-4e2c-a0e0-158ff2050a28",
+              "name": "Error SYS-002 Too many requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "loggers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_date_time",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end_date_time",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bc43d637-ab1e-45ac-8f31-3d0671eadca8",
+              "name": "Error SYS-001 System is busy.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "loggers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_date_time",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end_date_time",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bandwidth Limit Exceeded (Apache bw/limited extension)",
+              "code": 509,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.licor.cloud",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c44dfc9b-48b9-46a9-8a4c-9992efc31d12",
+    "name": "HOBOLINK External Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

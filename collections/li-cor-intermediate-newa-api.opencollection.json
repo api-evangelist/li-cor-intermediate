@@ -1,0 +1,53 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HOBOLINK External Data Newa API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Newa",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/newa/{device-serial-number}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.licor.cloud/v1/newa/:device-serial-number",
+            "params": [
+              {
+                "name": "device-serial-number",
+                "value": "",
+                "type": "path",
+                "description": "Device serial number"
+              },
+              {
+                "name": "start_date_time",
+                "value": "",
+                "type": "query",
+                "description": "UTC start date for query, in format \"yyyy-MM-dd HH:mm:ss\" (ex. 2023-11-27 13:45:00)."
+              },
+              {
+                "name": "end_date_time",
+                "value": "",
+                "type": "query",
+                "description": "UTC end date for query, in format \"yyyy-MM-dd HH:mm:ss\" (ex. 2023-11-27 13:45:00)."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch organization data"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

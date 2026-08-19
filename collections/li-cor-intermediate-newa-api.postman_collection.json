@@ -1,0 +1,508 @@
+{
+  "item": [
+    {
+      "id": "1416b820-f334-440f-a2e0-f2642e77c9e0",
+      "name": "Newa",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5e1b4d31-d61e-43ae-b7c7-8953a06a7880",
+          "name": "Fetch organization data",
+          "request": {
+            "name": "Fetch organization data",
+            "description": {
+              "content": "Fetch organization data",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "newa",
+                ":device-serial-number"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_date_time",
+                  "value": "<string>",
+                  "description": "(Required) UTC start date for query, in format \"yyyy-MM-dd HH:mm:ss\" (ex. 2023-11-27 13:45:00)."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date_time",
+                  "value": "<string>",
+                  "description": "(Required) UTC end date for query, in format \"yyyy-MM-dd HH:mm:ss\" (ex. 2023-11-27 13:45:00)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "device-serial-number",
+                  "description": "(Required) Device serial number"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "28b61f69-c1b9-491b-8fbc-8a968849a6b5",
+              "name": "Returns json object with a list of sensors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "newa",
+                    ":device-serial-number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date_time",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end_date_time",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "device-serial-number",
+                      "description": "(Required) Device serial number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"more_data\": false,\n  \"sensors\": [\n    {\n      \"measurement_type\": \"string\",\n      \"sensor_sn\": \"string\",\n      \"unit\": \"string\",\n      \"meta_data\": \"string\",\n      \"observations\": [\n        {\n          \"value\": 2830.27980492653,\n          \"timestamp\": \"string\"\n        },\n        {\n          \"value\": 7388.113412000643,\n          \"timestamp\": \"string\"\n        }\n      ]\n    },\n    {\n      \"measurement_type\": \"string\",\n      \"sensor_sn\": \"string\",\n      \"unit\": \"string\",\n      \"meta_data\": \"string\",\n      \"observations\": [\n        {\n          \"value\": 4077.596985254991,\n          \"timestamp\": \"string\"\n        },\n        {\n          \"value\": 8240.00796469823,\n          \"timestamp\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9a05797-47f1-4ed1-85ed-4bda15ff9f58",
+              "name": "Error VAL-001, VAL-002, VAL-006, VAL-008, VAL-034 Invalid request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "newa",
+                    ":device-serial-number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date_time",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end_date_time",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "device-serial-number",
+                      "description": "(Required) Device serial number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8061782f-3b04-4cb9-82fc-9abad36b3077",
+              "name": "Error ATH-001 Invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "newa",
+                    ":device-serial-number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date_time",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end_date_time",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "device-serial-number",
+                      "description": "(Required) Device serial number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "766a894d-c3a5-4c72-bab0-ee3ac817da92",
+              "name": "Error ATH-001 Invalid token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "newa",
+                    ":device-serial-number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date_time",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end_date_time",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "device-serial-number",
+                      "description": "(Required) Device serial number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "243621f6-a9b1-4354-901e-21672aff2f95",
+              "name": "Error SYS-002 Too many requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "newa",
+                    ":device-serial-number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date_time",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end_date_time",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "device-serial-number",
+                      "description": "(Required) Device serial number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2427d647-157d-4006-9df1-c23bc370961c",
+              "name": "Error DW-010 Failed to retrieve observations from data warehouse, IOE-005 Unable to execute unit conversion function, IOE-006 Unable to load unit conversion function.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "newa",
+                    ":device-serial-number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date_time",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end_date_time",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "device-serial-number",
+                      "description": "(Required) Device serial number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f5ebece2-4ef9-4981-875c-6dc0df0c566d",
+              "name": "Error SYS-001 System is busy.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "newa",
+                    ":device-serial-number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date_time",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end_date_time",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "device-serial-number",
+                      "description": "(Required) Device serial number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bandwidth Limit Exceeded (Apache bw/limited extension)",
+              "code": 509,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.licor.cloud",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "41ca3673-4501-4e75-80f6-2c19e8dbe9f8",
+    "name": "HOBOLINK External Data Newa API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}
