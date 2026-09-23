@@ -1,8 +1,7 @@
 {
   "provider": "li-cor-intermediate",
   "sources": [
-    "li-cor-intermediate-data-api-openapi.yml",
-    "li-cor-intermediate-newa-api-openapi.yml"
+    "_original/li-cor-intermediate-hobolink-openapi.json"
   ],
   "outputs": [
     "li-cor-intermediate-data-api-openapi.yml",
@@ -11,6 +10,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "li-cor-intermediate-hobolink-openapi.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "li-cor-intermediate-hobolink-openapi.json: tagged paths GET /v1/data -> Data",
+    "li-cor-intermediate-hobolink-openapi.json: tagged paths GET /v1/newa/{device-serial-number} -> Newa",
+    "li-cor-intermediate-hobolink-openapi.json: declared missing tag: Data",
+    "li-cor-intermediate-hobolink-openapi.json: declared missing tag: Newa",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "li-cor-intermediate-data-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "li-cor-intermediate-newa-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

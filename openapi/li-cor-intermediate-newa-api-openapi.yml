@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: HOBOLINK External Data Newa API
+  title: HOBOLINK External Newa API
   version: v1
 servers:
 - url: https://api.licor.cloud
@@ -84,6 +84,10 @@ paths:
           description: Error SYS-001 System is busy.
       tags:
       - Newa
+      summary: Get newa by device serial number
+      x-summary-source: derived
+      operationId: getV1NewaByDeviceSerialNumber
+      x-operation-id-source: derived
 components:
   securitySchemes:
     BearerAuth:
