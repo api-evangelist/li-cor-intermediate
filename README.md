@@ -64,29 +64,123 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-LI-COR Intermediate, Inc. is the Battery Ventures-backed holding entity for LI-COR, a Lincoln, Nebraska maker of environmental and life-science instrumentation. LI-COR Environmental ([licor.com](https://www.licor.com/)) builds greenhouse-gas analyzers, eddy-covariance flux systems, photosynthesis and soil-gas instruments, and the HOBO data logger line; LICORbio ([licorbio.com](https://www.licorbio.com/)) builds Western blot imaging systems and infrared fluorescent reagents.
+LI-COR Intermediate, Inc. is the Battery Ventures-backed holding entity for LI-COR, a Lincoln, Nebraska environmental and life-science instrumentation maker founded more than fifty years ago. The group operates under two brands: LI-COR Environmental (licor.com), which builds greenhouse-gas analyzers, eddy-covariance flux systems, photosynthesis and soil-gas instruments, and the HOBO line of data loggers; and LICORbio (licorbio.com), which builds Western blot imaging systems and infrared fluorescent dyes and reagents. Its instruments are cited in more than 73,000 research publications and used across 1,200+ universities in 150+ countries. The connected-device side of the business runs through LI-COR Cloud (licor.cloud, formerly HOBOlink), which exposes a public read-only HOBOLINK External API for pulling logger and sensor observations into customer systems.
 
-Backed by: battery-ventures
+**Areas:** Company · Environmental Monitoring · Greenhouse Gas · Climate · Agriculture · Sensors · Data Loggers · IoT · Scientific Instruments · Life Sciences · Time Series Data
 
-## API
+## LI-COR Intermediate on APIs.io
 
-**HOBOLINK External API** — `https://api.licor.cloud` — [reference](https://api.licor.cloud/v1/docs)
+Everything profiled for LI-COR Intermediate is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/li-cor-intermediate/](https://apis.io/providers/li-cor-intermediate/)** — or go straight to one of the APIs or properties below.
 
-A read-only REST API for LI-COR Cloud (formerly HOBOlink) returning time-series observations from HOBO data loggers and their sensors. Two published operations, JWT bearer auth, 60 requests per minute.
+### APIs (2)
 
-- `GET /v1/data` — observations for a list of logger serial numbers over a UTC range
-- `GET /v1/newa/{device-serial-number}` — sensor-grouped observations for one device
+- [LI-COR Intermediate Data API](https://apis.io/apis/li-cor-intermediate/li-cor-intermediate-data-api/) — The Data API from LI-COR Intermediate — 1 operation(s) for data.
+- [LI-COR Intermediate Newa API](https://apis.io/apis/li-cor-intermediate/li-cor-intermediate-newa-api/) — The Newa API from LI-COR Intermediate — 1 operation(s) for newa.
 
-## Artifacts
+### Published properties
 
-| Artifact | Method |
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [li-cor-hobolink](https://apis.io/servers/li-cor-intermediate/li-cor-hobolink/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Li Cor Intermediate Agentic Access](https://apis.io/agentic-access/li-cor-intermediate/li-cor-intermediate-agentic-access/)
+
+#### Collections (2)
+
+Postman and Open Collection request collections.
+
+- [HOBOLINK External Data API](https://apis.io/collections/li-cor-intermediate/open-li-cor-intermediate-data-api/)
+- [HOBOLINK External Data Newa API](https://apis.io/collections/li-cor-intermediate/open-li-cor-intermediate-newa-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Li Cor Intermediate Hobolink Overlay](https://apis.io/overlays/li-cor-intermediate/li-cor-intermediate-hobolink-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Li Cor Intermediate Authentication](https://apis.io/security/li-cor-intermediate/li-cor-intermediate-authentication/)
+- [Li Cor Intermediate Domain Security](https://apis.io/security/li-cor-intermediate/li-cor-intermediate-domain-security/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Li Cor Intermediate Rate Limits](https://apis.io/rate-limits/li-cor-intermediate/li-cor-intermediate-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.licor.com/)
+- [Documentation](https://api.licor.cloud/v1/docs)
+- [API reference](https://api.licor.cloud/v1/docs)
+- [Support](https://www.licor.com/support/home.html)
+- [Blog](https://www.licor.com/blog)
+- [Terms of service](https://www.licor.com/corp/legal)
+- [Privacy policy](https://www.licor.com/corp/privacy-policy)
+- [GitHub](https://github.com/LI-COR)
+
+## API Evangelist rating
+
+**Kin Score 35.7** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
 |---|---|
-| `openapi/` | searched (extracted from the live Swagger UI) |
-| `agentic-access/`, `authentication/`, `conformance/`, `conventions/`, `data-model/`, `errors/`, `lifecycle/`, `mcp/` | derived |
-| `rate-limits/`, `security/` (domain security) | probed |
-| `overlays/`, `llms/`, `skills/` | generated |
-| `packages/`, `well-known/` | searched (negative results recorded) |
+| Discoverability | 73.2 |
+| Contract quality | 47.8 |
+| Contract governance | 4.5 |
+| Operational transparency | 23.7 |
+| Developer ergonomics | 37.5 |
+| Access clarity | 21.1 |
 
-## Not published
+**Agent readiness 24.8** — agent-aware
 
-No `/llms.txt`, no `/.well-known/` documents or `security.txt`, no status page, no dated changelog, no public SDKs, no CLI, no webhook or AsyncAPI event surface, no sandbox, no OAuth scopes, no trust center or vulnerability-disclosure program.
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 19.5** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/li-cor-intermediate/](https://apis.io/providers/li-cor-intermediate/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for LI-COR Intermediate: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/li-cor-intermediate/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
